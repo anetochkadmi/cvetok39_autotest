@@ -62,7 +62,7 @@ public class CalculatorAddFlowerAndCompareInCartTest extends BaseTest {
                     calculatorParams.getFlowersCount(),
                     calculatorParams.getBouquetsCount()
             );
-            Thread.sleep(10000);
+            //Thread.sleep(5000);
 
             System.out.println("Тест [CalculatorAddFlowerAndCompareInCartTest] завершен успешно!\n");
         } catch (Exception e) {

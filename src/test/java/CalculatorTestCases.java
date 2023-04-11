@@ -9,10 +9,10 @@ public class CalculatorTestCases {
 
         params.setFlower("Роза");
         params.setHeight(50);
-        params.setBouquetsCount(2);
+        params.setBouquetsCount(1);
         params.setPack(CalculatorPack.FILM);
         params.setColor(CalculatorColor.RED);
-        params.setFlowersCount(12);
+        params.setFlowersCount(11);
 
         CalculatorAddFlowerAndCompareInCartTest calculatorTest = new CalculatorAddFlowerAndCompareInCartTest(params);
         calculatorTest.run();
