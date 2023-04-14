@@ -22,12 +22,12 @@ public class Cart {
             String color,
             String height,
             int flowersCount,
-            String bouquetsCount) {
+            String bouquetsCount) throws Exception {
         WebElement $basketElementTitle = $basketElement.findElement(By.cssSelector("button.order-structure__product-title"));
         int basketElementFlowersCount = Integer.parseInt($basketElementTitle.getText().replaceAll("[^0-9]", ""));
 
         if (basketElementFlowersCount != flowersCount) {
-            throw new Error("Кол-во цветков элемента в корзине не соответствует заданным параметрам");
+            throw new Exception("Кол-во цветков элемента в корзине не соответствует заданным параметрам");
         }
 
         List<WebElement> $basketElementParams = $basketElement.findElements(By.cssSelector("dl.order-structure__product-params div.order-structure__params-group"));
@@ -42,7 +42,7 @@ public class Cart {
             switch ($title.getText()) {
                 case "Высота" -> {
                     if (!Objects.equals(value, height.toLowerCase())) {
-                        throw new Error("Высота элемента в корзине не соответствует заданным параметрам");
+                        throw new Exception("Высота элемента в корзине не соответствует заданным параметрам");
                     }
 
                     break;
@@ -50,7 +50,7 @@ public class Cart {
 
                 case "Цвет" -> {
                     if (!Objects.equals(value, color.toLowerCase())) {
-                        throw new Error("Цвет элемента в корзине не соответствует заданным параметрам");
+                        throw new Exception("Цвет элемента в корзине не соответствует заданным параметрам");
                     }
 
                     break;
@@ -60,7 +60,7 @@ public class Cart {
                     int itemBouquetsCount = Integer.parseInt(value.replaceAll("[^0-9]", ""));
 
                     if (itemBouquetsCount != bouquetsCountAsInt) {
-                        throw new Error("Кол-во букетов элемента в корзине не соответствует заданным параметрам");
+                        throw new Exception("Кол-во букетов элемента в корзине не соответствует заданным параметрам");
                     }
 
                     break;
@@ -81,7 +81,7 @@ public class Cart {
                     );
 
                     if (finalPrice != priceFromElement) {
-                        throw new Error("Цена элемента в корзине не соответствует заданным параметрам");
+                        throw new Exception("Цена элемента в корзине не соответствует заданным параметрам");
                     }
 
                     break;
@@ -97,7 +97,7 @@ public class Cart {
             String height,
             int flowersCount,
             String bouquetsCount
-    ) {
+    ) throws Exception {
         WebElement $firstBasketElement = driver.findElement(By.cssSelector("div.order-structure__swiper.js-order-structure-swiper > ul > li"));
         compareItemByParams(
                 $firstBasketElement,

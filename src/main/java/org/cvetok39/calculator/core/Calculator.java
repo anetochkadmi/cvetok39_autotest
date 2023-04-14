@@ -20,7 +20,9 @@ public class Calculator {
         driver = _driver;
     }
 
-    public void selectColor(String color) {
+    /* TODO: selectFlower */
+
+    public void selectColor(String color) throws Exception {
         boolean isSelected = false;
 
         WebElement colorSelector = driver.findElement(By.cssSelector(".flowers-constructor__controls .flowers-constructor__params .flower-params__item.flower-params__item_color > div > button"));
@@ -37,13 +39,13 @@ public class Calculator {
         }
 
         if (!isSelected) {
-            throw new Error("Выбранный цвет недоступен");
+            throw new Exception("Выбранный цвет недоступен");
         }
 
         System.out.println("Для калькулятора выбран цвет: " + color);
     }
 
-    public void selectHeight(String height) {
+    public void selectHeight(String height) throws Exception {
         boolean isSelected = false;
 
         WebElement heightSelector = driver.findElement(By.cssSelector(".flowers-constructor__controls .flowers-constructor__params .flower-params__item.flower-params__item_size > div > button"));
@@ -60,20 +62,20 @@ public class Calculator {
         }
 
         if (!isSelected) {
-            throw new Error("Выбранная высота недоступен");
+            throw new Exception("Выбранная высота недоступен");
         }
 
         System.out.println("Для калькулятора выбрана высота: " + height);
     }
 
-    public void selectFlowersCount(int count) {
+    public void selectFlowersCount(int count) throws Exception {
         WebElement maxElement = driver.findElement(By.xpath("/html/body/main/div/section/div[1]/div[3]/div[1]/ul/li[3]/div[1]/div/div/div/div/div/div[2]"));
 
         int minCount = 10;
         int maxCount = Integer.parseInt(maxElement.getAttribute("textContent"));
 
         if (!(count > minCount && count < maxCount)) {
-            throw new Error("Данное кол-во цветов {" + count + "} недоступно");
+            throw new Exception("Данное кол-во цветов {" + count + "} недоступно");
         }
 
         String inputCssSelector = "li.flower-params__item.flower-params__item_range > div.flower-params__item-inner.flower-params__item-inner_range.active > div > div > label > input";
@@ -83,7 +85,7 @@ public class Calculator {
         js.executeScript("arguments[0].value = " + "'" + count + "';" + "arguments[0].dispatchEvent(new Event('input'));", input);
     }
 
-    public void selectPack(String pack) {
+    public void selectPack(String pack) throws Exception {
         boolean isSelected = false;
 
         WebElement packSelector = driver.findElement(By.cssSelector(".flowers-constructor__controls .flowers-constructor__params .flower-params__item.flower-params__item_pack > div > button"));
@@ -100,13 +102,13 @@ public class Calculator {
         }
 
         if (!isSelected) {
-            throw new Error("Выбранная упаковка недоступен");
+            throw new Exception("Выбранная упаковка недоступен");
         }
 
         System.out.println("Для калькулятора выбрана упаковка: " + pack);
     }
 
-    public void selectBouquetsCount(String count) {
+    public void selectBouquetsCount(String count) throws Exception {
         boolean isSelected = false;
 
         WebElement countSelector = driver.findElement(By.xpath("/html/body/main/div/section/div[1]/div[3]/div[1]/ul/li[5]/div/button"));
@@ -125,7 +127,7 @@ public class Calculator {
         }
 
         if (!isSelected) {
-            throw new Error("Выбранное кол-во букетов недоступно");
+            throw new Exception("Выбранное кол-во букетов недоступно");
         }
 
         System.out.println("Для калькулятора выбранно кол-во букетов: " + count);

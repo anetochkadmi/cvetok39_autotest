@@ -1,5 +1,6 @@
 package org.cvetok39;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -13,6 +14,8 @@ public class BaseTest {
 
         driver = new ChromeDriver(getDesiredCapabilities());
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        driver.manage().window().maximize();
     }
 
     public final ChromeDriver getDriver() {
